@@ -7,5 +7,5 @@ class Planet < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: true
   # :population NA
-  validates :population, numericality: { only_integer: true }
+  # validates :population, numericality: { only_integer: true }
 end
