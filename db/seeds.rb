@@ -29,6 +29,10 @@ starshipsCount = starshipsCSV.count
 f = planetsCSV.first
 puts f[:name]
 puts f[:population]
+puts planetsCount
+puts charactersCount
+puts speciesCount
+puts starshipsCount
 
 # create Starships
 # starship = Starship.new
@@ -60,7 +64,18 @@ rand(1..starshipsCount).times do
     )
   end
 
-  rand(1..charactersCount).times do
+  200.times do
+    s = Specie.order('random()').first.id
+    p = Planet.order('random()').first.id
+    # puts s.specie_id
+    # puts p.planet_id
+    Inhabit.create(
+      planet_id: p,
+      specie_id: s
+    )
+  end
+
+  rand(100..300).times do
     name = charactersCSV[rand(charactersCSV.length)]
     character = Character.create(
       name: name[:name],
@@ -76,3 +91,4 @@ puts "Generated #{Starship.count} starships."
 puts "Generated #{Planet.count} planets."
 puts "Generated #{Specie.count} species."
 puts "Generated #{Character.count} characters."
+puts "Generated #{Inhabit.count} inhabits."
