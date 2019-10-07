@@ -3,6 +3,12 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+import 'bootstrap'
+import './src/application.scss'
+// above https://gorails.com/forum/install-bootstrap-with-webpack-with-rails-6-beta
+
+
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
