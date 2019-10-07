@@ -36,7 +36,11 @@ puts starshipsCount
 
 # create Starships
 # starship = Starship.new
-rand(1..starshipsCount).times do
+starship = Starship.new
+planet = Planet.new
+specie = Specie.new
+
+rand(10..starshipsCount).times do
   name = starshipsCSV[rand(starshipsCSV.length)]
   # name and model presence: true
   starship = Starship.create(
@@ -45,46 +49,46 @@ rand(1..starshipsCount).times do
     crew: name[:crew]
   )
 
-  # planet = Planet.new
-  # rand(1..planetsCount).times do
+  # rand(21..planetsCount).times do
   name = planetsCSV[rand(planetsCSV.length)]
   # name and model presence: true
   planet = Planet.create(
-    name: name[:name],
+    name: Faker::Movies::StarWars.planet,
     population: name[:population]
   )
+  # end
 
-  specie = Specie.new
-  rand(1..speciesCount).times do
-    name = speciesCSV[rand(speciesCSV.length)]
-    # name and model presence: true
-    specie = Specie.create(
-      name: name[:name],
-      language: name[:language]
-    )
-  end
+  # rand(15..speciesCount).times do
+  name = speciesCSV[rand(speciesCSV.length)]
+  # name and model presence: true
+  specie = Specie.create(
+    name: name[:name],
+    language: name[:language]
+  )
+  # end
 
-  200.times do
-    s = Specie.order('random()').first.id
-    p = Planet.order('random()').first.id
-    # puts s.specie_id
-    # puts p.planet_id
-    Inhabit.create(
-      planet_id: p,
-      specie_id: s
-    )
-  end
-
-  rand(100..300).times do
+  rand(50..100).times do
     name = charactersCSV[rand(charactersCSV.length)]
-    character = Character.create(
+    Character.create(
       name: name[:name],
       starship_id: starship.id,
       planet_id: planet.id,
       specie_id: specie.id
     )
+    # name: name[:name]
     # puts character.name
   end
+end
+
+rand(100..200).times do
+  s = Specie.order('random()').first.id
+  p = Planet.order('random()').first.id
+  # puts s.specie_id
+  # puts p.planet_id
+  Inhabit.create(
+    planet_id: p,
+    specie_id: s
+  )
 end
 
 puts "Generated #{Starship.count} starships."
