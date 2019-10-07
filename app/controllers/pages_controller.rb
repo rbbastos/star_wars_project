@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_page, only: %i[show edit update destroy]
 
   # GET /pages
   # GET /pages.json
@@ -9,7 +11,18 @@ class PagesController < ApplicationController
 
   # GET /pages/1
   # GET /pages/1.json
-  def show
+  def show; end
+
+  def permalink
+    @page = Page.find_by_permalink(params[:permalink])
+    # This project is about building an Star Wars website. It will display information related to characters, species, planets and starships about the movie. The project will have 5 tables. - Character - Planet - Specie - Starship - Inhabit (joint table for many-to-many relationship) In addition, I will implement a menu, including About Us, Planets, Species, Characters and Starships categories. Some pages will have authentication requirement. The design should be using bootstrap gem.
+    if @page
+      # test if find_by_permalink worked properly
+      render :show # /app/views/pages/show.html.erb
+    else
+      # grab error in find_by_permalink
+      redirect_to root_path
+    end
   end
 
   # GET /pages/new
@@ -18,8 +31,7 @@ class PagesController < ApplicationController
   end
 
   # GET /pages/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /pages
   # POST /pages.json
@@ -62,13 +74,14 @@ class PagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_page
-      @page = Page.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def page_params
-      params.require(:page).permit(:title, :content, :permalink)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_page
+    @page = Page.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def page_params
+    params.require(:page).permit(:title, :content, :permalink)
+  end
 end
