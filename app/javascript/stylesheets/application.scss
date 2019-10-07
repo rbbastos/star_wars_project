@@ -1,0 +1,11 @@
+
+@import "~bootstrap/scss/bootstrap"; // never forget the semicolon at the end
+@import "./_custom";
+
+#logo{
+  float: left;
+  font-size: 14pt;
+}
+
+//https://gorails.com/forum/install-bootstrap-with-webpack-with-rails-6-beta
+// https://medium.com/@adrian_teh/ruby-on-rails-6-with-webpacker-and-bootstrap-step-by-step-guide-41b52ef4081f
