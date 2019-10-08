@@ -1,7 +1,30 @@
 # frozen_string_literal: true
 
+# require 'nokogiri'
 require 'open-uri'
 require 'json'
+
+# Fetch and decode JSON resources from the Star Wars API by URL.
+def swapi_fetch(url)
+  JSON.parse(open(url).read)
+end
+
+# luke = swapi_fetch('https://swapi.co/api/people/1')
+# puts luke['name']
+
+# Build the "person by id" people endpoint URL.
+def person_url(id)
+  'https://swapi.co/api/people/' + id.to_s
+end
+
+# luke = swapi_fetch(person_url(1))
+# puts luke['name']
+
+# Format unordered dashed list of films.
+def film_title_list(films)
+  film_titles = films.map { |f| f['title'] }
+  '- ' + film_titles.join(" \n            - ")
+end
 
 Character.destroy_all
 Inhabit.destroy_all
@@ -30,9 +53,9 @@ planets_count = planets_csv.count
 characters_count = characters_csv.count
 species_count = species_csv.count
 starships_count = starships_csv.count
-f = planets_csv.first
-puts f[:name]
-puts f[:population]
+# f = planets_csv.first
+# puts f[:name]
+# puts f[:population]
 puts planets_count
 puts characters_count
 puts species_count
@@ -71,9 +94,23 @@ rand(10..starships_count).times do
   )
   # end
 
+  # rand(50..100).times do
+  character_ids = 1..16
+  character_ids.each do |character_id|
+    # puts character_id
+    name = swapi_fetch(person_url(character_id))
+    Character.create(
+      name: name['name'],
+      starship_id: starship.id,
+      planet_id: planet.id,
+      specie_id: specie.id
+    )
+  end
+  # end
+
   rand(50..100).times do
     name = characters_csv[rand(characters_csv.length)]
-    Character.create(
+    Character.find_or_create_by(
       name: name[:name],
       starship_id: starship.id,
       planet_id: planet.id,
