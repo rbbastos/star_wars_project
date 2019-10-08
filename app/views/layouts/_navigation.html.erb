@@ -11,10 +11,10 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Characters</a>
-            <a class="dropdown-item" href="#">Species</a>
-            <a class="dropdown-item" href="#">Planets</a>
-            <a class="dropdown-item" href="#">Starships</a>
+            <%= link_to "Characters", characters_path, class: "dropdown-item" %>
+            <%= link_to "Species", species_index_path, class: "dropdown-item" %>
+            <%= link_to "Planets", planets_path, class: "dropdown-item" %>
+            <%= link_to "Starships", starships_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Separated link</a>
           </div>
