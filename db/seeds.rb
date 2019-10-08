@@ -133,6 +133,7 @@ rand(100..200).times do
 end
 
 Page.create(title: 'About Us', content: 'Please fill this in.', permalink: 'about_us')
+Page.create(title: 'Frequently Asked Questions', content: 'Please fill this in.', permalink: 'faq')
 
 puts "Generated #{Starship.count} starships."
 puts "Generated #{Planet.count} planets."
