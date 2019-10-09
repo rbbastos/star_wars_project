@@ -73,7 +73,8 @@ rand(10..starships_count).times do
   starship = Starship.create(
     name: name[:name],
     model: name[:model],
-    crew: name[:crew]
+    crew: name[:crew],
+    passengers: name[:passengers]
   )
 
   # rand(21..planetsCount).times do
@@ -101,6 +102,7 @@ rand(10..starships_count).times do
     name = swapi_fetch(person_url(character_id))
     Character.create(
       name: name['name'],
+      gender: name['gender'],
       starship_id: starship.id,
       planet_id: planet.id,
       specie_id: specie.id
@@ -112,6 +114,7 @@ rand(10..starships_count).times do
     name = characters_csv[rand(characters_csv.length)]
     Character.find_or_create_by(
       name: name[:name],
+      gender: name[:gender],
       starship_id: starship.id,
       planet_id: planet.id,
       specie_id: specie.id
