@@ -1,2 +1,7 @@
-<h1>Characters#show</h1>
-<p>Find me in app/views/characters/show.html.erb</p>
+<h1><%= @character.name %></h1>
+
+<p>This character gender is <%= character.gender%>.</p>
+
+<p>This character belongs to specie <%= link_to(@character.specie.name, @character.specie) %>.</p>
+<p>This character lives on planet <%= link_to(@character.planet.name, @character.planet) %>.</p>
+<p>This character is crew of starship <%= link_to(@character.starship.name, @character.starship) %>.</p>

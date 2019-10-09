@@ -1,2 +1,14 @@
-<h1>Species#show</h1>
-<p>Find me in app/views/species/show.html.erb</p>
+<h1><%= @specie.name %></h1>
+
+<p>This specie's spoken language is <%= @specie.language %>.</p>
+
+<h3>Character of this Specie</h3>
+<% if @specie.characters.empty? %>
+<p>There are no characters of this specie in the database.</p>
+<% else %>
+<ul>
+  <% @specie.characters.each do |character| %>
+  <li><%=character.name%><%=link_to '[...]', character%> </li>
+  <%end%>
+</ul>
+<% end %>

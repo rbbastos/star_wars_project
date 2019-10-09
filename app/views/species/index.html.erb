@@ -1,4 +1,8 @@
 <h1>Star Wars - Species</h1>
+<p>There are a total of : <%= pluralize @species.count, 'specie'%> species.</p>
+<ul>
 <% @species.each do |specie| %>
-<h2><%= specie.name %></h2>
+<li><%= specie.name %><%=link_to '[...]', specie%></li>
 <% end %>
+</ul>
+

@@ -1,5 +1,12 @@
 <h1>Star Wars - Planets</h1>
+<p>There are a total of : <%= pluralize @planets.count, 'planet'%> planets.</p>
 
+<ul>
 <% @planets.each do |planet| %>
-<h2><%= planet.name %></h2>
+<li><%= planet.name %><%=link_to '[...]', planet%></li>
 <% end %>
+</ul>
+
+
+
+

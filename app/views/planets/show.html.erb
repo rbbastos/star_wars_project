@@ -2,7 +2,20 @@
 
 <p>This planet's population is <%= @planet.population %>.</p>
 
-<h3>Species in this Planet</h3>
+<h4>Species in this Planet</h4>
+<ul>
+  <li></li>
+</ul>
+
+<h4>Character that lives in this Planet</h4>
+<ul>
+<% @planet.characters.each do |character| %>
+  <li><%= character.name %><%=link_to '[...]', character%></li>
+<% end %>
+</ul>
+
+<h4>List of species in this Planet</h4>
 <ul>
 
 </ul>
+
