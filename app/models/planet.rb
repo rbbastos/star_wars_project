@@ -3,7 +3,7 @@
 class Planet < ApplicationRecord
   has_many :characters
   has_many :inhabits
-  has_many :species, through: :inhabits
+  has_many :species, through: :inhabits, source: :specie
 
   validates :name, presence: true
   validates :name, uniqueness: true

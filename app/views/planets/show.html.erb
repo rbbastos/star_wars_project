@@ -2,20 +2,22 @@
 
 <p>This planet's population is <%= @planet.population %>.</p>
 
-<h4>Species in this Planet</h4>
-<ul>
-  <li></li>
-</ul>
 
 <h4>Character that lives in this Planet</h4>
+<% if @planet.characters.empty? %>
+  <p>There are no characters assigned to this planet in the database.</p>
+  <% else %>
 <ul>
 <% @planet.characters.each do |character| %>
   <li><%= character.name %><%=link_to '[...]', character%></li>
 <% end %>
 </ul>
+<% end %>
 
 <h4>List of species in this Planet</h4>
 <ul>
-
+  <% @planet.species.each do |specie| %>
+    <li><%= specie.name %><%=link_to '[...]', specie%></li>
+  <% end %>
 </ul>
 

@@ -12,3 +12,14 @@
   <%end%>
 </ul>
 <% end %>
+
+<h3>Planets where this specie is currently living on.</h3>
+<% if @specie.planets.empty? %>
+<p>The database shows no planet with this specie.</p>
+<% else %>
+<ul>
+  <% @specie.planets.each do |planet| %>
+  <li><%=planet.name%><%=link_to '[...]', planet%> </li>
+  <%end%>
+</ul>
+<% end %>
