@@ -43,6 +43,7 @@ group :development do
   gem "smarter_csv"
   gem 'faker'
   gem 'nokogiri'
+  gem 'kaminari'
 end
 
 group :test do
