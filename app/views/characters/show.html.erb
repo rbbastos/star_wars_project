@@ -1,6 +1,6 @@
 <h1><%= @character.name %></h1>
 
-<p>This character gender is <%= character.gender%>.</p>
+<p>This character gender is <%= @character.gender%>.</p>
 
 <p>This character belongs to specie <%= link_to(@character.specie.name, @character.specie) %>.</p>
 <p>This character lives on planet <%= link_to(@character.planet.name, @character.planet) %>.</p>
