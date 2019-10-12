@@ -1,7 +1,19 @@
 <h1>Star Wars - Starships</h1>
 <p>There are a total of : <%= pluralize @starships.count, 'starship'%> starships.</p>
-<ul>
-  <% @starships.each do |starship| %>
-  <li><%= starship.name %><%=link_to '[...]', starship%></li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Model</th>
+      <th>Crew</th>
+      <th>Passengers</th>
+      <th>More Infos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @starships %>
+  </tbody>
+</table>
+
+

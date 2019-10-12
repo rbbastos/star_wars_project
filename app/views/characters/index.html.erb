@@ -1,8 +1,17 @@
 <h1>Star Wars - Characters</h1>
 <p>There are a total of : <%=@characters.count%> characters.</p>
-<ul>
-<% @characters.each do |character| %>
-<li><%= character.name %><%=link_to '[...]', character%></li>
-<% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>More Infos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @characters %>
+  </tbody>
+</table>
+
 

@@ -1,11 +1,21 @@
 <h1>Star Wars - Planets</h1>
 <p>There are a total of : <%= pluralize @planets.count, 'planet'%> planets.</p>
 
-<ul>
-<% @planets.each do |planet| %>
-<li><%= planet.name %><%=link_to '[...]', planet%></li>
-<% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Population</th>
+      <th>More Infos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @planets %>
+  </tbody>
+</table>
+
+
 
 
 
